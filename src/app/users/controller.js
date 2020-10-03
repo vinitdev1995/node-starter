@@ -7,7 +7,7 @@ const repository = require( "./repository" );
 
 exports.register = async ( req, res ) => {
     const {username} =  req.body
-    const user = await User.find({ username })
+    const user = await User.findOne({ username });
 
     if ( user ) {
         logger.error( "User already exists" );

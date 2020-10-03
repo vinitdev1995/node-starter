@@ -20,8 +20,7 @@ const router = express.Router( );
 *       {
 *         "article": {
 *            "title": "Tech stuff",
-*            "body": "This is the body of the article",
-*            "authorId": "123"
+*            "body": "This is the body of the article"*
 *           }
 *      }
 */

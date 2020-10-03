@@ -2,16 +2,20 @@ const config = require( "./index" );
 const mongoose = require( "mongoose" );
 
 module.exports = function( app ) {
-    mongoose.connect( config.mongoUrl, { useUnifiedTopology: true, useNewUrlParser: true });
-    mongoose.Promise = global.Promise;
+    try {
+        mongoose.connect( config.mongoUrl, { useUnifiedTopology: true, useNewUrlParser: true });
+        mongoose.Promise = global.Promise;
 
-    process.on( "SIGINT", cleanup );
-    process.on( "SIGTERM", cleanup );
-    process.on( "SIGHUP", cleanup );
+        process.on( "SIGINT", cleanup );
+        process.on( "SIGTERM", cleanup );
+        process.on( "SIGHUP", cleanup );
 
-
-    if ( app ) {
-        app.set( "mongoose", mongoose );
+        console.log("Mongoose connection  open")
+        if ( app ) {
+            app.set( "mongoose", mongoose );
+        }
+    } catch (error) {
+        console.log(error)
     }
 };
 

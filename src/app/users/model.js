@@ -4,7 +4,6 @@ const md5 = require( "md5" );
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema( {
-    id: { type: String, required: false },
     username: { type: String, required: true },
     password: { type: String, required: true },
     name: { type: String, required: true },
